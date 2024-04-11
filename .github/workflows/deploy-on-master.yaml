@@ -23,4 +23,6 @@ jobs:
         with:
           node-version: '20'
       - run: npm i react-scripts -g
+      - run: npm install --save-dev @babel/plugin-proposal-private-property-in-object
       - run: npm test
+ 
