@@ -23,4 +23,4 @@ jobs:
         with:
           node-version: '20'
       - run: npm i react-scripts -g
-      - run: npm tests
+      - run: npm test
