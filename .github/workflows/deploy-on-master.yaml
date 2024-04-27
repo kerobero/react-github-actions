@@ -51,6 +51,7 @@ jobs:
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/react-github-actions:${{ github.sha }}
   
   security:
+    needs: docker
     name: Security Stage
     runs-on: ubuntu-20.04
     steps:
