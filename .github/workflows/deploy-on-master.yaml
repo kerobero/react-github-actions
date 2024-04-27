@@ -1,5 +1,5 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: react-github-actions
+run-name: ${{ github.actor }} is deploying the app react-github-actions
 on: [push]
 jobs:
   checkout-code:
@@ -50,9 +50,9 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/react-github-actions:${{ github.sha }}
   
-  security:
+  audit:
     needs: docker
-    name: Security Stage
+    name: Audit Stage
     runs-on: ubuntu-20.04
     steps:
       - name: Run Trivy vulnerability scanner
@@ -64,3 +64,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+      - name: Run SAST
+        uses: AppThreat/sast-scan-action@master
+        with:
+          type: "node"
